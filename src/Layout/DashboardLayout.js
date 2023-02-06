@@ -16,8 +16,8 @@ const DashboardLayout = () => {
     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-80 bg-base-100 text-base-content gap-3">
       <li><button className='btn btn-outline'>Admin</button></li>
-      <li><button className='btn btn-outline'>Students</button></li>
-      <li><button className='btn btn-outline'>Users</button></li>
+      <li><button className='btn btn-outline'>All Students</button></li>
+      <li><button className='btn btn-outline'>All Users</button></li>
     </ul>
   
   </div>
