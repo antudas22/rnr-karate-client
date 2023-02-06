@@ -59,7 +59,7 @@ const Navbar = () => {
             </svg>
           </label>
           <ul
-            tabIndex={0}
+            tabIndex={1}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {menuItems}
@@ -74,6 +74,9 @@ const Navbar = () => {
           {menuItems}
         </ul>
       </div>
+      <label tabIndex={2} className="lg:hidden">
+        <label htmlFor="dashboard-drawer" className="btn btn-accent text-white btn-sm drawer-button lg:hidden">Open Menu</label>
+      </label>
     </div>
   );
 };
