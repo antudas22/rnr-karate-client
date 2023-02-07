@@ -6,13 +6,19 @@ import facebook from "../../assets/facebook.png"
 import twitter from "../../assets/twitter.png"
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const {register, formState: { errors }, handleSubmit} = useForm();
     const {createUser, updateUser} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-
+  const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
+
+    if(token){
+      navigate('/');
+    }
 
     const handleSignUp = data => {
       setSignUpError('');
@@ -47,10 +53,11 @@ const SignUp = () => {
       })
       .then(res => res.json())
       .then(data => {
-        console.log('save user', data);
-        navigate('/');
+        setCreatedUserEmail(email);
       })
     }
+
+    
 
     return (
         <div className="h-[800px] flex justify-center items-start mt-20">
