@@ -3,7 +3,7 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import About from "../../Pages/About/About";
 import Contact from "../../Pages/Contact/Contact";
-import AllStudents from "../../Pages/Dashboard/AllStudents/AllStudents";
+import AddStudent from "../../Pages/Dashboard/AddStudent/AddStudent";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Announcement from "../../Pages/Dashboard/Announcement/Announcement";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
@@ -53,8 +53,8 @@ const router = createBrowserRouter([
                 element: <AdminRoute><AllUsers /></AdminRoute>
             },
             {
-                path: '/dashboard/allstudents',
-                element: <AdminRoute><AllStudents /></AdminRoute>
+                path: '/dashboard/addstudent',
+                element: <AdminRoute><AddStudent /></AdminRoute>
             },
             {
                 path: '/dashboard/announcement',

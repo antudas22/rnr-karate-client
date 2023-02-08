@@ -16,7 +16,7 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content m-4">
+        <div className="drawer-content">
           <Outlet />
         </div>
         <div className="drawer-side">
@@ -35,8 +35,8 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/allstudents" className="btn btn-outline">
-                    All Students
+                  <Link to="/dashboard/addstudent" className="btn btn-outline">
+                    Add A Student
                   </Link>
                 </li>
                 <li>
