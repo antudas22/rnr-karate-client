@@ -5,6 +5,7 @@ import About from "../../Pages/About/About";
 import Contact from "../../Pages/Contact/Contact";
 import AllStudents from "../../Pages/Dashboard/AllStudents/AllStudents";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import Announcement from "../../Pages/Dashboard/Announcement/Announcement";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allstudents',
                 element: <AdminRoute><AllStudents /></AdminRoute>
+            },
+            {
+                path: '/dashboard/announcement',
+                element: <AdminRoute><Announcement /></AdminRoute>
             },
         ]
     }

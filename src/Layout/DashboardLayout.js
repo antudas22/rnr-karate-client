@@ -8,7 +8,7 @@ const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   return (
-    <div>
+    <div className="">
       <Navbar />
       <div className="drawer drawer-mobile">
         <input
@@ -16,7 +16,7 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content">
+        <div className="drawer-content m-4">
           <Outlet />
         </div>
         <div className="drawer-side">
@@ -37,6 +37,11 @@ const DashboardLayout = () => {
                 <li>
                   <Link to="/dashboard/allstudents" className="btn btn-outline">
                     All Students
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/announcement" className="btn btn-outline">
+                    Announcement
                   </Link>
                 </li>
               </>
