@@ -7,6 +7,9 @@ import twitter from "../../assets/twitter.png"
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import useToken from '../../hooks/useToken';
+import { Icon } from 'react-icons-kit'
+import {eye} from 'react-icons-kit/feather/eye'
+import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 
 const SignUp = () => {
     const {register, formState: { errors }, handleSubmit} = useForm();
@@ -57,7 +60,19 @@ const SignUp = () => {
       })
     }
 
-    
+    const [type, setType] = useState('password');
+    const [icon, setIcon] = useState(eyeOff);
+
+    const handleToggle = () => {
+      if(type === 'password'){
+        setIcon(eye);
+        setType('text');
+      }
+      else{
+        setIcon(eyeOff);
+        setType('password');
+      }
+    }
 
     return (
         <div className="h-[800px] flex justify-center items-start mt-20">
@@ -78,7 +93,7 @@ const SignUp = () => {
           {errors.email && <p className="text-error">{errors.email?.message}</p>}
           </div>
           <div className="form-control w-full max-w-sm">
-          <input type="password" {...register("password", {
+          <input type={type} {...register("password", {
             required: "Password is required!",
             minLength: {value: 8, message: 'Password must be at least 8 characters!'},
             pattern: {
@@ -86,6 +101,7 @@ const SignUp = () => {
               message: "Password must be strong!",
             }
             })} placeholder="Password" className="input input-bordered input-info w-full max-w-sm mt-4" />
+            <span onClick={handleToggle} className='cursor-pointer absolute mt-[26px] ml-[274px] '><Icon icon={icon} /></span>
           {errors.password && <p className="text-error">{errors.password?.message}</p>}
           <p className="text-sm mt-3" >Forget Password?</p>
           </div>

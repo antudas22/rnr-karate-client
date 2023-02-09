@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 const AddStudent = () => {
     const {register, formState: { errors }, handleSubmit} = useForm();
+    
     const handleAddStudent = data => {
         console.log(data);
     }
@@ -26,9 +27,16 @@ const AddStudent = () => {
           </div>
           <div className="form-control w-full max-w-lg">
           <input type="text" {...register("phone", {
-            required: "Phone is required!"
-          })} placeholder="Phone" className="input input-bordered input-info w-full max-w-lg mt-4" />
-          {errors.email && <p className="text-error">{errors.email?.message}</p>}
+            required: true
+          })} placeholder="(+880) 1234567890" className="input input-bordered input-info w-full max-w-lg mt-4" />
+          {errors.phone && <p className="text-error">{errors.phone?.message}</p>}
+          </div>
+
+          <div className="form-control w-full max-w-lg">
+          <input type="file" {...register("img", {
+            required: "Photo is required!"
+          })} className="input input-bordered input-info w-full max-w-lg mt-4" />
+          {errors.img && <p className="text-error">{errors.img?.message}</p>}
           </div>
           <input className="btn btn-accent mt-4 w-full" value="Add Student" type="submit" />
         </form>
