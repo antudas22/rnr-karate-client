@@ -1,9 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
+import ConfirmationModal from "../../Shared/ConfirmationModal/ConfirmationModal";
 import Loading from "../../Shared/Loading/Loading";
 
 const ManageStudents = () => {
-  const { data: students, isLoading } = useQuery({
+
+    const [deletingStudent, setDeletingStudent] = useState(null);
+
+    const closeModal = () => {
+        setDeletingStudent(null);
+    }
+
+  const { data: students, isLoading, refetch } = useQuery({
     queryKey: ["students"],
     queryFn: async () => {
       try {
@@ -17,6 +26,22 @@ const ManageStudents = () => {
       } catch (error) {}
     },
   });
+
+  const handleDeleteStudent = student => {
+    fetch(`http://localhost:5000/students/${student._id}`, {
+        method: 'DELETE',
+        headers: {
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.deletedCount > 0){
+            refetch();
+            toast.success(`Student ${student.name} deleted successfully.`)
+        }
+    })
+}
 
   if(isLoading){
     return <Loading />
@@ -54,13 +79,25 @@ const ManageStudents = () => {
                 <td>{student.email}</td>
                 <td>{student.phone}</td>
                 <td>
-                  <button className="btn btn-xs bg-red-600">Delete</button>
+                <label onClick={() => setDeletingStudent(student)} htmlFor="confirmation-modal" className="btn btn-xs bg-red-600">Delete</label>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {
+        deletingStudent && <ConfirmationModal
+        title={`Are you sure you want to delete?`}
+        message={`If you delete ${deletingStudent.name}. It cannot be undone.`}
+        successAction = {handleDeleteStudent}
+        successButtonName = "Delete"
+        modalData = {deletingStudent}
+        closeModal = {closeModal}
+        >
+
+        </ConfirmationModal>
+      }
     </div>
   );
 };

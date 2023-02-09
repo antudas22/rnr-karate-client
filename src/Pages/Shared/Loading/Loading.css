@@ -1,0 +1,18 @@
+.rnr-logo{
+    width: 80px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .rnr-logo {
+      animation: rnr-logo-spin infinite 4s linear;
+    }
+  }
+
+  @keyframes rnr-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

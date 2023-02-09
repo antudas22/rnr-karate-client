@@ -75,7 +75,7 @@ const AddStudent = () => {
           <div className="form-control w-full max-w-lg">
           <input type="file" {...register("image", {
             required: "Photo is required!"
-          })} className="input input-bordered input-info w-full max-w-lg mt-4" />
+          })} className="file-input file-input-bordered input-info w-full max-w-lg mt-4" />
           {errors.image && <p className="text-error">{errors.image?.message}</p>}
           </div>
           <input className="btn btn-accent mt-4 w-full" value="Add Student" type="submit" />
