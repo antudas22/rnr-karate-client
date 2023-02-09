@@ -6,6 +6,9 @@ import google from "../../assets/google.png"
 import facebook from "../../assets/facebook.png"
 import twitter from "../../assets/twitter.png"
 import useToken from '../../hooks/useToken';
+import { Icon } from 'react-icons-kit';
+import {eye} from 'react-icons-kit/feather/eye';
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 
 const Login = () => {
 
@@ -38,6 +41,20 @@ const Login = () => {
       })
     }
 
+    const [type, setType] = useState('password');
+    const [icon, setIcon] = useState(eyeOff);
+
+    const handleToggle = () => {
+      if(type === 'password'){
+        setIcon(eye);
+        setType('text');
+      }
+      else{
+        setIcon(eyeOff);
+        setType('password');
+      }
+    }
+
     return (
         <div className="h-[800px] flex justify-center items-start mt-20">
       <div className="max-w-sm w-full shadow-2xl p-10 rounded-3xl">
@@ -52,10 +69,11 @@ const Login = () => {
           {errors.email && <p className="text-error">{errors.email?.message}</p>}
           </div>
           <div className="form-control w-full max-w-sm">
-          <input type="password" {...register("password", {
+          <input type={type} {...register("password", {
             required: "Password is required!",
             minLength: {value: 8, message: 'Password must be at least 8 characters!'},
             })} placeholder="Password" className="input input-bordered input-info w-full max-w-sm mt-4" />
+            <span onClick={handleToggle} className='cursor-pointer absolute mt-[26px] ml-[274px] '><Icon icon={icon} /></span>
           {errors.password && <p className="text-error">{errors.password?.message}</p>}
           <p className="text-sm mt-3" >Forget Password?</p>
           </div>

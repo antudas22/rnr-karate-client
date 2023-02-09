@@ -1,11 +1,51 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddStudent = () => {
     const {register, formState: { errors }, handleSubmit} = useForm();
-    
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
+
+    const navigate = useNavigate();
+
     const handleAddStudent = data => {
-        console.log(data);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+        fetch(url, {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(imgData => {
+          if(imgData.success){
+            console.log(imgData.data.url);
+            const student = {
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                image: imgData.data.url
+            }
+
+            // Save student information to the database
+            fetch('http://localhost:5000/students', {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+              },
+              body: JSON.stringify(student)
+            })
+            .then(res => res.json())
+            .then(result => {
+              console.log(result);
+              toast.success(`${data.name} is added successfully.`)
+              navigate('/dashboard/managestudents')
+            })
+          }
+        })
     }
     return (
         <div className="flex justify-center items-start">
@@ -33,10 +73,10 @@ const AddStudent = () => {
           </div>
 
           <div className="form-control w-full max-w-lg">
-          <input type="file" {...register("img", {
+          <input type="file" {...register("image", {
             required: "Photo is required!"
           })} className="input input-bordered input-info w-full max-w-lg mt-4" />
-          {errors.img && <p className="text-error">{errors.img?.message}</p>}
+          {errors.image && <p className="text-error">{errors.image?.message}</p>}
           </div>
           <input className="btn btn-accent mt-4 w-full" value="Add Student" type="submit" />
         </form>

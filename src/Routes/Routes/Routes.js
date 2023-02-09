@@ -7,6 +7,7 @@ import AddStudent from "../../Pages/Dashboard/AddStudent/AddStudent";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Announcement from "../../Pages/Dashboard/Announcement/Announcement";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import ManageStudents from "../../Pages/Dashboard/ManageStudents/ManageStudents";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addstudent',
                 element: <AdminRoute><AddStudent /></AdminRoute>
+            },
+            {
+                path: '/dashboard/managestudents',
+                element: <AdminRoute><ManageStudents /></AdminRoute>
             },
             {
                 path: '/dashboard/announcement',
