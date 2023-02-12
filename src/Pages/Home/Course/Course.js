@@ -1,5 +1,6 @@
 import React from 'react';
 import course from '../../../assets/course.jpg'
+import PrimaryButton from '../../../components/PrimaryButton/PrimaryButton';
 
 const Course = () => {
     return (
@@ -13,7 +14,7 @@ const Course = () => {
     <div>
       <h1 className="text-4xl font-bold">About Course</h1>
       <p className="py-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam<br/> facere at quo eos tempore unde delectus tempora nostrum impedit<br/> incidunt, beatae, ipsam sit ea error corrupti iste<br/><br/> rerum, consectetur earum voluptates provident cupiditate. Amet blanditiis<br/>facere at quo eos tempore unde delectus tempora nostrum impedit<br/> velit exercitationem quos consequatur nostrum?</p>
-      <button className="btn btn-accent text-white">View Details</button>
+      <PrimaryButton>View Details</PrimaryButton>
     </div>
   </div>
 </div>

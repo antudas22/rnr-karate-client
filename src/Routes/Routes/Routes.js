@@ -3,9 +3,11 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import About from "../../Pages/About/About";
 import Contact from "../../Pages/Contact/Contact";
+import AddAnnouncement from "../../Pages/Dashboard/AddAnnouncement/AddAnnouncement";
 import AddStudent from "../../Pages/Dashboard/AddStudent/AddStudent";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Announcement from "../../Pages/Dashboard/Announcement/Announcement";
+import Classes from "../../Pages/Dashboard/Classes/Classes";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ManageStudents from "../../Pages/Dashboard/ManageStudents/ManageStudents";
 import Home from "../../Pages/Home/Home/Home";
@@ -24,19 +26,23 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: 'about',
+                path: '/classes',
+                element: <Classes />
+            },
+            {
+                path: '/about',
                 element: <About />
             },
             {
-                path: 'contact',
+                path: '/contact',
                 element: <Contact />
             },
             {
-                path: 'login',
+                path: '/login',
                 element: <Login />
             },
             {
-                path: 'signup',
+                path: '/signup',
                 element: <SignUp />
             }
         ]
@@ -62,8 +68,12 @@ const router = createBrowserRouter([
                 element: <AdminRoute><ManageStudents /></AdminRoute>
             },
             {
+                path: '/dashboard/addannouncement',
+                element: <AdminRoute><AddAnnouncement /></AdminRoute>
+            },
+            {
                 path: '/dashboard/announcement',
-                element: <AdminRoute><Announcement /></AdminRoute>
+                element: <Announcement />
             },
         ]
     }

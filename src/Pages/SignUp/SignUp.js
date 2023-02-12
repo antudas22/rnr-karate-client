@@ -10,8 +10,12 @@ import useToken from '../../hooks/useToken';
 import { Icon } from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
+
+  useTitle('Sign Up')
+
     const {register, formState: { errors }, handleSubmit} = useForm();
     const {createUser, updateUser} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
@@ -75,7 +79,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="h-[800px] flex justify-center items-start mt-20">
+        <div className="h-[800px] flex justify-center items-start mt-10">
       <div className="max-w-sm w-full shadow-2xl p-10 rounded-3xl">
         <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600 py-2 text-center mb-4">
           Sign Up
@@ -105,7 +109,7 @@ const SignUp = () => {
           {errors.password && <p className="text-error">{errors.password?.message}</p>}
           <p className="text-sm mt-3" >Forget Password?</p>
           </div>
-          <input className="btn btn-accent mt-4 w-full" value="Sign Up" type="submit" />
+          <input className="btn bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none mt-4 w-full" value="Sign Up" type="submit" />
           {signUpError && <p className='text-error mt-2'>{signUpError}</p>}
         </form>
         <p className="text-sm mt-3 text-center" >Already have an account? <Link className="text-sky-600" to="/login">Login.</Link></p>

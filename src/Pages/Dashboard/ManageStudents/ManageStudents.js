@@ -1,10 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
 import ConfirmationModal from "../../Shared/ConfirmationModal/ConfirmationModal";
 import Loading from "../../Shared/Loading/Loading";
 
 const ManageStudents = () => {
+  useTitle('Manage Students')
+  const {user, logOut} = useContext(AuthContext);
 
     const [deletingStudent, setDeletingStudent] = useState(null);
 
@@ -12,18 +16,37 @@ const ManageStudents = () => {
         setDeletingStudent(null);
     }
 
+    useEffect( () => {
+      fetch(`http://localhost:5000/students?email=${user?.email}`,{
+        headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
+      })
+      .then(res => {
+        if(res.status === 401 || res.status === 403){
+          return logOut();
+        }
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+      })
+    }, [user?.email, logOut])
+
   const { data: students, isLoading, refetch } = useQuery({
-    queryKey: ["students"],
+    queryKey: ['students'],
     queryFn: async () => {
       try {
-        const res = await fetch("http://localhost:5000/students", {
+        const res = await fetch('http://localhost:5000/students', {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,
           },
         });
         const data = await res.json();
         return data;
-      } catch (error) {}
+      } catch (error) {
+        
+      }
     },
   });
 
@@ -65,7 +88,8 @@ const ManageStudents = () => {
             </tr>
           </thead>
           <tbody>
-            {students?.map((student, i) => (
+            {
+            students?.map((student, i) => (
               <tr key={student._id} className="hover">
                 <th>{i + 1}</th>
                 <td>

@@ -9,8 +9,11 @@ import useToken from '../../hooks/useToken';
 import { Icon } from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
+
+  useTitle('Login')
 
     const {register, formState: { errors }, handleSubmit} = useForm();
     const {signIn} = useContext(AuthContext);
@@ -27,7 +30,6 @@ const Login = () => {
     }
 
     const handleLogin = data => {
-      console.log(data)
       setLoginError("");
       signIn(data.email, data.password)
       .then(result =>{
@@ -56,7 +58,7 @@ const Login = () => {
     }
 
     return (
-        <div className="h-[800px] flex justify-center items-start mt-20">
+        <div className="h-[800px] flex justify-center items-start mt-10">
       <div className="max-w-sm w-full shadow-2xl p-10 rounded-3xl">
         <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600 py-2 text-center mb-4">
           Login
@@ -82,7 +84,7 @@ const Login = () => {
               loginError && <p className="text-error mt-4">{loginError}</p>
             }
           </div>
-          <input className="btn btn-accent mt-4 w-full" value="Login" type="submit" />
+          <input className="btn bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none mt-4 w-full" value="Login" type="submit" />
         </form>
         <p className="text-sm mt-3 text-center" >New to RNR Gladiator? <Link className="text-sky-600" to="/signup">Create a new account.</Link></p>
       <div className="divider">OR</div>

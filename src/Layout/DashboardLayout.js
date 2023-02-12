@@ -21,7 +21,7 @@ const DashboardLayout = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 text-base-content gap-3">
+          <ul className="menu p-4 w-80 text-base-content bg-base-100 gap-3">
             {isAdmin && (
               <>
                 <li>
@@ -45,12 +45,18 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/announcement" className="btn btn-outline">
-                    Announcement
+                  <Link to="/dashboard/addannouncement" className="btn btn-outline">
+                    Add An Announcement
                   </Link>
                 </li>
               </>
             )}
+            <li>
+                  <Link to="/dashboard/announcement" className="btn btn-outline">
+                  <span className="relative indicator-item badge bg-red-600 border-none">0</span>
+                    Announcement
+                  </Link>
+                </li>
           </ul>
         </div>
       </div>

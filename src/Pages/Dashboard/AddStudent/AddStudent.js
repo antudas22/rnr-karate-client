@@ -2,8 +2,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 
 const AddStudent = () => {
+  useTitle('Add Students')
     const {register, formState: { errors }, handleSubmit} = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
@@ -21,7 +23,6 @@ const AddStudent = () => {
         .then(res => res.json())
         .then(imgData => {
           if(imgData.success){
-            console.log(imgData.data.url);
             const student = {
                 name: data.name,
                 email: data.email,
@@ -78,7 +79,7 @@ const AddStudent = () => {
           })} className="file-input file-input-bordered input-info w-full max-w-lg mt-4" />
           {errors.image && <p className="text-error">{errors.image?.message}</p>}
           </div>
-          <input className="btn btn-accent mt-4 w-full" value="Add Student" type="submit" />
+          <input className="btn bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none mt-4 w-full" value="Add Student" type="submit" />
         </form>
       </div>
     </div>
