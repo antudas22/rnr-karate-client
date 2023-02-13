@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/classes">Classes</Link>
+        <Link to="/posts">Posts</Link>
       </li>
       <li>
         <Link to="/about">About Us</Link>
@@ -29,15 +29,14 @@ const Navbar = () => {
     </React.Fragment>
   );
   return (
-    <div className="bg-gradient-to-tr from-cyan-400 to-sky-600 p-1 my-2 rounded-md">
-      <div className="flex items-center bg-base-100 rounded-md">
-      <div className="navbar-start ml-2">
+      <div className="flex items-center bg-base-100 rounded-md px-5 my-2">
+      <div className="navbar-start">
           <img width={"75px"} src={rnrLogo} alt="logo" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal gap-1">{menuItems}</ul>
       </div>
-      <div className="flex navbar-end mr-4">
+      <div className="flex navbar-end">
         {user?.uid ? (
           <>
             <div className="dropdown dropdown-end">
@@ -85,7 +84,6 @@ const Navbar = () => {
             </Link>
         )}
       </div>
-    </div>
     </div>
 
     //   <div className="navbar bg-base-100 justify-between">

@@ -29,7 +29,8 @@ const AddAnnouncement = () => {
             .then(res => res.json())
             .then(result => {
               console.log(result);
-              toast.success('Announcement is added successfully.')
+              toast.success('Announcement is added successfully.');
+              
               navigate('/dashboard/announcement')
             })
     }

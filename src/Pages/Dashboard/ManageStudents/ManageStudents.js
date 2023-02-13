@@ -103,7 +103,7 @@ const ManageStudents = () => {
                 <td>{student.email}</td>
                 <td>{student.phone}</td>
                 <td>
-                <label onClick={() => setDeletingStudent(student)} htmlFor="confirmation-modal" className="btn btn-xs bg-red-600">Delete</label>
+                <label onClick={() => setDeletingStudent(student)} htmlFor="confirmation-modal" className="btn btn-xs bg-red-600 border-none">Delete</label>
                 </td>
               </tr>
             ))}

@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
+import useStudent from "../hooks/useStudent";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
+  const [isStudent] = useStudent(user?.email);
   return (
     <div className="">
       <Navbar />
@@ -49,14 +51,26 @@ const DashboardLayout = () => {
                     Add An Announcement
                   </Link>
                 </li>
+                <li>
+              <Link to="/dashboard/allannouncements" className="btn btn-outline">
+                Announcement
+              </Link>
+              </li>
+                <li>
+              <Link to="/dashboard/addpost" className="btn btn-outline">
+                Add A Post
+              </Link>
+              </li>
               </>
             )}
-            <li>
-                  <Link to="/dashboard/announcement" className="btn btn-outline">
-                  <span className="relative indicator-item badge bg-red-600 border-none">0</span>
-                    Announcement
-                  </Link>
-                </li>
+            {
+              isStudent &&
+              <li>
+              <Link to="/dashboard/announcement" className="btn btn-outline">
+                Announcement
+              </Link>
+              </li>
+            }
           </ul>
         </div>
       </div>

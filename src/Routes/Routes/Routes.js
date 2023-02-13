@@ -4,17 +4,21 @@ import Main from "../../Layout/Main";
 import About from "../../Pages/About/About";
 import Contact from "../../Pages/Contact/Contact";
 import AddAnnouncement from "../../Pages/Dashboard/AddAnnouncement/AddAnnouncement";
+import AddPost from "../../Pages/Dashboard/AddPost/AddPost";
 import AddStudent from "../../Pages/Dashboard/AddStudent/AddStudent";
+import AllAnnouncements from "../../Pages/Dashboard/AllAnnouncements.js/AllAnnouncements";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Announcement from "../../Pages/Dashboard/Announcement/Announcement";
-import Classes from "../../Pages/Dashboard/Classes/Classes";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ManageStudents from "../../Pages/Dashboard/ManageStudents/ManageStudents";
+import Error from "../../Pages/Error/Error";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import Posts from "../../Pages/Posts/Posts";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import StudentRoute from "../StudentRoute/StudentRoute";
 
 const router = createBrowserRouter([
     {
@@ -26,8 +30,8 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/classes',
-                element: <Classes />
+                path: '/posts',
+                element: <Posts />
             },
             {
                 path: '/about',
@@ -73,9 +77,21 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/announcement',
-                element: <Announcement />
+                element: <StudentRoute><Announcement /></StudentRoute>
+            },
+            {
+                path: '/dashboard/allannouncements',
+                element: <AdminRoute><AllAnnouncements /></AdminRoute>
+            },
+            {
+                path: '/dashboard/addpost',
+                element: <AdminRoute><AddPost /></AdminRoute>
             },
         ]
+    },
+    {
+        path: '*',
+        element: <Error />
     }
 ])
 

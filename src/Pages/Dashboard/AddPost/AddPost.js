@@ -4,14 +4,14 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../hooks/useTitle';
 
-const AddStudent = () => {
-  useTitle('Add Student')
-    const {register, formState: { errors }, handleSubmit} = useForm();
+const AddPost = () => {
+  useTitle('Add Post')
+    const {register, handleSubmit} = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
     const navigate = useNavigate();
 
-    const handleAddStudent = data => {
+    const handleAddPost = data => {
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -23,27 +23,27 @@ const AddStudent = () => {
         .then(res => res.json())
         .then(imgData => {
           if(imgData.success){
-            const student = {
-                name: data.name,
-                email: data.email,
-                phone: data.phone,
+            const post = {
+                title: data.title,
+                date: data.date,
+                description: data.description,
                 image: imgData.data.url
             }
 
             // Save student information to the database
-            fetch('http://localhost:5000/students', {
+            fetch('http://localhost:5000/posts', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
               },
-              body: JSON.stringify(student)
+              body: JSON.stringify(post)
             })
             .then(res => res.json())
             .then(result => {
               console.log(result);
-              toast.success(`${data.name} is added successfully.`)
-              navigate('/dashboard/managestudents')
+              toast.success('Post is added successfully.')
+              navigate('/posts')
             })
           }
         })
@@ -52,38 +52,35 @@ const AddStudent = () => {
         <div className="flex justify-center items-start">
       <div className="max-w-lg w-full shadow-2xl p-10 rounded-xl">
         <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600 py-2 text-center mb-4">
-          Add A Student
+          Add A Post
         </h2>
-        <form onSubmit={handleSubmit(handleAddStudent)}>
+        <form onSubmit={handleSubmit(handleAddPost)}>
           <div className="form-control w-full max-w-lg">
-          <input type="text" {...register("name", {
+          <input type="text" {...register("title", {
             required: true
-          })} placeholder="Full Name" className="input input-bordered input-info w-full max-w-lg mt-4" />
+          })} placeholder="Add Your Post Title" className="input input-bordered input-info w-full max-w-lg mt-4" />
           </div>
           <div className="form-control w-full max-w-lg">
-          <input type="email" {...register("email", {
-            required: "Email is required!"
-          })} placeholder="Email" className="input input-bordered input-info w-full max-w-lg mt-4" />
-          {errors.email && <p className="text-error">{errors.email?.message}</p>}
+          <input type="text" {...register("date", {
+            required: true
+          })} placeholder="dd/mm/yyyy" className="input input-bordered input-info w-full max-w-lg mt-4" />
           </div>
           <div className="form-control w-full max-w-lg">
-          <input type="text" {...register("phone", {
+          <textarea type="text" {...register("description", {
             required: true
-          })} placeholder="(+880) 1234567890" className="input input-bordered input-info w-full max-w-lg mt-4" />
-          {errors.phone && <p className="text-error">{errors.phone?.message}</p>}
+          })} placeholder="Write Description Of Your Post" className="textarea textarea-bordered textarea-info w-full max-w-lg mt-4" />
           </div>
 
           <div className="form-control w-full max-w-lg">
           <input type="file" {...register("image", {
             required: "Photo is required!"
           })} className="file-input file-input-bordered input-info w-full max-w-lg mt-4" />
-          {errors.image && <p className="text-error">{errors.image?.message}</p>}
           </div>
-          <input className="btn bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none mt-4 w-full" value="Add Student" type="submit" />
+          <input className="btn bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none mt-4 w-full" value="Add Post" type="submit" />
         </form>
       </div>
     </div>
     );
 };
 
-export default AddStudent;
+export default AddPost;

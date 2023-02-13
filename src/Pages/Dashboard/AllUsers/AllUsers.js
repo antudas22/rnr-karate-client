@@ -75,7 +75,7 @@ const AllUsers = () => {
         <td>{user.email}</td>
         <td>{ user?.role !== 'student' && <button onClick={() => handleMakeStudent(user._id)} className='btn btn-xs btn-accent text-white'>Make Student</button>}</td>
 
-        <td>{ user?.role === 'student' && <button onClick={() => handleDeleteStudent(user._id)} className='btn btn-xs bg-red-600 text-white'>Delete</button>}</td>
+        <td>{ user?.role === 'student' && <button onClick={() => handleDeleteStudent(user._id)} className='btn btn-xs bg-red-600 text-white border-none'>Delete</button>}</td>
       </tr>)
       }
     </tbody>

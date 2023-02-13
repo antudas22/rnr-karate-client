@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useTitle from '../../../hooks/useTitle';
 
-const Announcement = () => {
+const AllAnnouncements = () => {
     useTitle('Announcement');
 
     const {data: announcements, } = useQuery({
@@ -39,4 +39,4 @@ const Announcement = () => {
     );
 };
 
-export default Announcement;
+export default AllAnnouncements;
