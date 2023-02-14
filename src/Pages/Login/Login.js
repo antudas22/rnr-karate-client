@@ -10,13 +10,14 @@ import { Icon } from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import useTitle from '../../hooks/useTitle';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
   useTitle('Login')
 
     const {register, formState: { errors }, handleSubmit} = useForm();
-    const {signIn} = useContext(AuthContext);
+    const {signIn, providerLogin, updateUser} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail)
@@ -27,6 +28,41 @@ const Login = () => {
 
     if(token){
       navigate(from, {replace: true});
+    }
+
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogleSignIn = () => {
+      providerLogin(googleProvider)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        const userInfo = {
+          displayName: user.displayName
+        }
+        updateUser(userInfo)
+        .then(() => {
+          saveUser(user.displayName, user.email);
+        })
+        .catch(error => console.log(error));
+        
+      })
+      .catch(error => console.error(error))
+    }
+
+    const saveUser = (name, email) => {
+      const user = {name, email};
+      fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      })
+      .then(res => res.json())
+      .then(data => {
+        setLoginUserEmail(email);
+      })
     }
 
     const handleLogin = data => {
@@ -58,7 +94,7 @@ const Login = () => {
     }
 
     return (
-        <div className="h-[800px] flex justify-center items-start mt-10">
+        <div className="flex justify-center items-start mt-10">
       <div className="max-w-sm w-full shadow-2xl p-10 rounded-3xl">
         <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600 py-2 text-center mb-4">
           Login
@@ -88,17 +124,12 @@ const Login = () => {
         </form>
         <p className="text-sm mt-3 text-center" >New to RNR Gladiator? <Link className="text-sky-600" to="/signup">Create a new account.</Link></p>
       <div className="divider">OR</div>
-      <div className="flex justify-evenly ">
-        <Link to="">
-          <img className="w-10" src={facebook} alt="" />
-        </Link>
-        <Link to="">
-          <img className="w-10" src={google} alt="" />
-        </Link>
-        <Link to="">
-          <img className="w-10" src={twitter} alt="" />
-        </Link>
-      </div>
+        <button className='border-2 border-black rounded-lg w-full py-2' onClick={handleGoogleSignIn}>
+          <div className='flex justify-center items-center gap-2'>
+            <img className="w-8" src={google} alt="" />
+            <p className='uppercase font-bold'>Continue with google</p>
+          </div>
+        </button>
       </div>
     </div>
     );

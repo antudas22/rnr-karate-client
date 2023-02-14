@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import rnrLogo from "../../../assets/rnr-logo.png";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import { FaUserNinja } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -40,9 +41,16 @@ const Navbar = () => {
         {user?.uid ? (
           <>
             <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user?.photoURL} alt="profile-pic" />
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar w-14 h-14">
+                <div className="w-12 rounded-full">
+                  {
+                    user?.photoURL ?
+                    <img src={user?.photoURL} alt="profile-pic" />
+                    :
+                    <div className="flex h-full justify-center items-center">
+                      <FaUserNinja className="text-3xl text-sky-500" />
+                    </div>
+                  }
                 </div>
               </label>
               <ul
@@ -50,9 +58,11 @@ const Navbar = () => {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-1"
               >
                 <li>
-                  <Link to="">
-                    Profile
-                  </Link>
+                      {
+                        <p>{user?.displayName}</p>
+                        ||
+                        <p>{user?.email}</p>
+                      }
                 </li>
                 <div className="lg:hidden">
         <ul className="">{menuItems}</ul>

@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import About from "../../Pages/About/About";
+import Classes from "../../Pages/Classes/Classes";
 import Contact from "../../Pages/Contact/Contact";
 import AddAnnouncement from "../../Pages/Dashboard/AddAnnouncement/AddAnnouncement";
 import AddPost from "../../Pages/Dashboard/AddPost/AddPost";
@@ -12,10 +13,12 @@ import Announcement from "../../Pages/Dashboard/Announcement/Announcement";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ManageStudents from "../../Pages/Dashboard/ManageStudents/ManageStudents";
 import Error from "../../Pages/Error/Error";
+import Belts from "../../Pages/Home/Belts/Belts";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Posts from "../../Pages/Posts/Posts";
 import SignUp from "../../Pages/SignUp/SignUp";
+import TermsAndConditions from "../../Pages/TermsAndConditions/TermsAndConditions";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import StudentRoute from "../StudentRoute/StudentRoute";
@@ -48,7 +51,11 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp />
-            }
+            },
+            {
+                path: '/termsandconditions',
+                element: <TermsAndConditions />
+            },
         ]
     },
     {

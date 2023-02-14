@@ -1,9 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import google from "../../assets/google.png"
-import facebook from "../../assets/facebook.png"
-import twitter from "../../assets/twitter.png"
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import useToken from '../../hooks/useToken';
@@ -19,13 +16,15 @@ const SignUp = () => {
     const {register, formState: { errors }, handleSubmit} = useForm();
     const {createUser, updateUser} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-  const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [accepted, setAccepted] = useState(false);
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
     if(token){
       navigate('/');
     }
+
 
     const handleSignUp = data => {
       setSignUpError('');
@@ -78,8 +77,12 @@ const SignUp = () => {
       }
     }
 
+    const handleAccepted = e => {
+      setAccepted(e.target.checked)
+    }
+
     return (
-        <div className="h-[800px] flex justify-center items-start mt-10">
+        <div className="flex justify-center items-start mt-10">
       <div className="max-w-sm w-full shadow-2xl p-10 rounded-3xl">
         <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600 py-2 text-center mb-4">
           Sign Up
@@ -107,24 +110,19 @@ const SignUp = () => {
             })} placeholder="Password" className="input input-bordered input-info w-full max-w-sm mt-4" />
             <span onClick={handleToggle} className='cursor-pointer absolute mt-[26px] ml-[274px] '><Icon icon={icon} /></span>
           {errors.password && <p className="text-error">{errors.password?.message}</p>}
-          <p className="text-sm mt-3" >Forget Password?</p>
           </div>
-          <input className="btn bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none mt-4 w-full" value="Sign Up" type="submit" />
+
+          <div className="form-control my-4">
+            <div className='flex justify-between'>
+              <p>Accept <Link className='text-sky-600' to='/termsandconditions'>Terms & Conditions.</Link></p>
+              <input onClick={handleAccepted} type="checkbox" className="checkbox checkbox-info" />
+            </div>
+          </div>
+
+          <input disabled={!accepted} className="btn bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none w-full" value="Sign Up" type="submit" />
           {signUpError && <p className='text-error mt-2'>{signUpError}</p>}
         </form>
         <p className="text-sm mt-3 text-center" >Already have an account? <Link className="text-sky-600" to="/login">Login.</Link></p>
-      <div className="divider">OR</div>
-      <div className="flex justify-evenly ">
-        <Link to="">
-          <img className="w-10" src={facebook} alt="" />
-        </Link>
-        <Link to="">
-          <img className="w-10" src={google} alt="" />
-        </Link>
-        <Link to="">
-          <img className="w-10" src={twitter} alt="" />
-        </Link>
-      </div>
       </div>
     </div>
     );

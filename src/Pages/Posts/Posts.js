@@ -4,7 +4,7 @@ import useTitle from '../../hooks/useTitle';
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 const Posts = () => {
-    useTitle('Announcement');
+    useTitle('Posts');
 
     const {data: posts, } = useQuery({
         queryKey: ['announcements'],
@@ -29,7 +29,7 @@ const Posts = () => {
                 <h1 className='inline-block text-4xl font-bold border-b-4 border-slate-500  text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600'>Posts</h1>
                 </div>
             {
-                posts?.map(post => <div key={post._id} className="card max-w-2xl bg-neutral shadow-xl mt-4 mx-auto">
+                posts?.map(post => <div key={post._id} className="card max-w-2xl bg-neutral shadow-xl mt-6 mx-auto">
                 <figure><img src={post.image} alt="Shoes" /></figure>
                 <div className="card-body text-white">
                   <div className='flex justify-between'>
