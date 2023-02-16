@@ -3,8 +3,8 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaRegClock } from "react-icons/fa";
 
 const Cards = () => {
   return (
-    <div className="flex justify-around mt-20">
-      <div className="card w-96 bg-cyan-300 shadow-xl">
+    <div className="flex flex-col lg:flex-row justify-around mt-5 lg:mt-20 gap-5 lg:gap-0 p-7">
+      <div className="card lg:w-96 bg-cyan-300 shadow-xl cursor-pointer transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 duration-700">
         <div className="flex p-10 items-center gap-5 text-white">
           <div>
             <FaRegClock className="text-7xl" />
@@ -15,7 +15,7 @@ const Cards = () => {
           </div>
         </div>
       </div>
-      <div className="card w-96 bg-rose-300 shadow-xl">
+      <div className="card lg:w-96 bg-rose-300 shadow-xl cursor-pointer transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 duration-700">
         <div className="flex p-10 items-center gap-5 text-white">
           <div>
             <FaMapMarkerAlt className="text-7xl" />
@@ -26,7 +26,7 @@ const Cards = () => {
           </div>
         </div>
       </div>
-      <div className="card w-96 bg-amber-300 shadow-xl">
+      <div className="card lg:w-96 bg-amber-300 shadow-xl cursor-pointer transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 duration-700">
         <div className="flex p-10 items-center gap-5 text-white">
           <div>
             <FaPhoneAlt className="text-7xl" />
@@ -34,6 +34,7 @@ const Cards = () => {
           <div>
             <h2 className="card-title">Contact Us</h2>
             <p>+880 1675-913288</p>
+            <p>+880 1313-800323</p>
           </div>
         </div>
       </div>

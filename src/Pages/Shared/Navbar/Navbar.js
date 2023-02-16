@@ -30,7 +30,8 @@ const Navbar = () => {
     </React.Fragment>
   );
   return (
-      <div className="flex items-center bg-base-100 rounded-md px-5 my-2">
+      <div>
+        <div className="flex items-center bg-base-100 rounded-md px-5 my-2">
       <div className="navbar-start">
           <img width={"75px"} src={rnrLogo} alt="logo" />
       </div>
@@ -95,6 +96,8 @@ const Navbar = () => {
         )}
       </div>
     </div>
+      <ul className="flex lg:hidden justify-center gap-5 mb-3">{menuItems}</ul>
+      </div>
 
     //   <div className="navbar bg-base-100 justify-between">
     //   <div className="navbar-start">

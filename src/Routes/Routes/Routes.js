@@ -16,7 +16,9 @@ import Error from "../../Pages/Error/Error";
 import Belts from "../../Pages/Home/Belts/Belts";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import MoreAboutSensei from "../../Pages/MoreAboutSensei/MoreAboutSensei";
 import Posts from "../../Pages/Posts/Posts";
+import Qualifications from "../../Pages/Qualifications/Qualifications";
 import SignUp from "../../Pages/SignUp/SignUp";
 import TermsAndConditions from "../../Pages/TermsAndConditions/TermsAndConditions";
 import AdminRoute from "../AdminRoute/AdminRoute";
@@ -56,6 +58,14 @@ const router = createBrowserRouter([
                 path: '/termsandconditions',
                 element: <TermsAndConditions />
             },
+            {
+                path: '/aboutsensei',
+                element: <MoreAboutSensei />
+            },
+            {
+                path: '/qualifications',
+                element: <Qualifications />
+            }
         ]
     },
     {
