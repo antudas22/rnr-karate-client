@@ -24,7 +24,7 @@ const Posts = () => {
         }
     })
     return (
-        <div className='mt-3'>
+        <div className='mt-5 mb-10 p-5 lg:p-0'>
             <div className='flex justify-center mb-10'>
                 <h1 className='inline-block text-4xl font-bold border-b-4 border-slate-500  text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600'>Posts</h1>
                 </div>

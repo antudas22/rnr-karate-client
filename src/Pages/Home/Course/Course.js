@@ -13,8 +13,8 @@ const Course = () => {
   <div className="hero-content gap-40 flex-col lg:flex-row-reverse">
     <img src={course} className="max-h-[400px] rounded-lg shadow-2xl" alt='' />
     <div>
-      <h1 className="text-4xl font-bold">About Course</h1>
-      <p className="py-6">Karate Styles & upgrading is based on changing belts.<br/>
+      <h1 className="text-4xl font-bold text-black">About Course</h1>
+      <p className="py-6 text-black">Karate Styles & upgrading is based on changing belts.<br/>
 
 It takes 6 months to upgrade from one to another belt.<br/>
 

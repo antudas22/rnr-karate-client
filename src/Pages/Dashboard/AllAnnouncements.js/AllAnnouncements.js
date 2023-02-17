@@ -23,7 +23,8 @@ const AllAnnouncements = () => {
         }
     })
     return (
-        <div className='mt-3'>
+        <div className='mt-3 p-2'>
+            <h3 className='text-2xl font-bold my-4'>Announcements</h3>
             {
                 announcements?.map(announcement => <div key={announcement._id} className="card bg-neutral text-neutral-content mt-6">
                 <div className="card-body">

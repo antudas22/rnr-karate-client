@@ -36,7 +36,7 @@ const AddAnnouncement = () => {
     }
 
     return (
-        <div className="flex justify-center items-start mt-5">
+        <div className="flex justify-center items-start mt-5 p-4">
       <div className="max-w-lg w-full shadow-2xl p-10 rounded-xl">
         <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600 py-2 text-center mb-4">
         Add An Announcement

@@ -58,7 +58,7 @@ const Navbar = () => {
                 tabIndex={1}
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-1"
               >
-                <li>
+                <li className="text-black">
                       {
                         <p>{user?.displayName}</p>
                         ||
@@ -68,11 +68,11 @@ const Navbar = () => {
                 <div className="lg:hidden">
         <ul className="">{menuItems}</ul>
       </div>
-                <li>
+                <li className="text-black">
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
                 
-                <li>
+                <li className="text-black">
                   <Link to="">Settings</Link>
                 </li>
                 <li>
@@ -87,16 +87,32 @@ const Navbar = () => {
             </div>
           </>
         ) : (
-            <Link
+            <>
+            <div className="dropdown dropdown-end">
+            <label tabIndex={2} className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current text-black"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </label>
+      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-1">
+      {menuItems}
+      <li><Link
               className=" px-6 py-3 font-bold rounded-lg bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none"
               to="/login"
             >
               Log in
             </Link>
+      </li>
+      </ul>
+    </div>
+            <Link
+              className="hidden lg:block px-6 py-3 font-bold rounded-lg bg-gradient-to-r from-cyan-400 to-sky-600 text-white uppercase border-none"
+              to="/login"
+            >
+              Log in
+            </Link>
+            </>
         )}
       </div>
     </div>
-      <ul className="flex lg:hidden justify-center gap-5 mb-3">{menuItems}</ul>
       </div>
 
     //   <div className="navbar bg-base-100 justify-between">
