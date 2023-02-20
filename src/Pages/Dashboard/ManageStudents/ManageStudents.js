@@ -17,7 +17,7 @@ const ManageStudents = () => {
     }
 
     useEffect( () => {
-      fetch(`http://localhost:5000/students?email=${user?.email}`,{
+      fetch(`https://rnr-karate-server.vercel.app/students?email=${user?.email}`,{
         headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`
         }
@@ -37,7 +37,7 @@ const ManageStudents = () => {
     queryKey: ['students'],
     queryFn: async () => {
       try {
-        const res = await fetch('http://localhost:5000/students', {
+        const res = await fetch('https://rnr-karate-server.vercel.app/students', {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,
           },
@@ -51,7 +51,7 @@ const ManageStudents = () => {
   });
 
   const handleDeleteStudent = student => {
-    fetch(`http://localhost:5000/students/${student._id}`, {
+    fetch(`https://rnr-karate-server.vercel.app/students/${student._id}`, {
         method: 'DELETE',
         headers: {
             authorization: `bearer ${localStorage.getItem('accessToken')}`

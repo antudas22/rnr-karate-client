@@ -9,7 +9,7 @@ const AllAnnouncements = () => {
         queryKey: ['announcements'],
         queryFn: async () => {
             try{
-                const res = await fetch('http://localhost:5000/announcements', {
+                const res = await fetch('https://rnr-karate-server.vercel.app/announcements', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }

@@ -31,7 +31,7 @@ const AddPost = () => {
             }
 
             // Save student information to the database
-            fetch('http://localhost:5000/posts', {
+            fetch('https://rnr-karate-server.vercel.app/posts', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json',

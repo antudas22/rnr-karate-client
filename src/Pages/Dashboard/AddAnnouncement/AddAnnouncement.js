@@ -18,7 +18,7 @@ const AddAnnouncement = () => {
             message: data.message
         }
 
-        fetch('http://localhost:5000/announcements', {
+        fetch('https://rnr-karate-server.vercel.app/announcements', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json',

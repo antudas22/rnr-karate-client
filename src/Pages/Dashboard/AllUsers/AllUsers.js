@@ -10,14 +10,14 @@ const AllUsers = () => {
     const {data: users = [], refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async() => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://rnr-karate-server.vercel.app/users');
             const data = await res.json()
             return data;
         }
     });
 
     const handleMakeStudent = id => {
-      fetch(`http://localhost:5000/users/student/${id}`, {
+      fetch(`https://rnr-karate-server.vercel.app/users/student/${id}`, {
         method: 'PUT',
         headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -35,7 +35,7 @@ const AllUsers = () => {
     };
 
     const handleDeleteStudent = id => {
-      fetch(`http://localhost:5000/users/student/${id}`, {
+      fetch(`https://rnr-karate-server.vercel.app/users/student/${id}`, {
         method: 'PATCH',
         headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`
