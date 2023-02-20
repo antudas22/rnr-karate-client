@@ -9,6 +9,7 @@ import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import useTitle from '../../hooks/useTitle';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
 
@@ -18,7 +19,7 @@ const Login = () => {
     const {user, signIn, providerLogin, updateUser} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
-    const [token] = useToken(loginUserEmail)
+    const [token] = useToken(loginUserEmail);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -69,7 +70,12 @@ const Login = () => {
       .then(result =>{
         const user = result.user;
         console.log(user);
-        setLoginUserEmail(data.email)
+        if(user.emailVerified){
+          setLoginUserEmail(data.email)
+        }
+        else{
+          toast.error('Your email is not verified! Please check your email inbox or spam folder to get email verification link.',{duration: 10000,})
+        }
       })
       .catch(error => {
         console.error(error.message)
@@ -91,8 +97,9 @@ const Login = () => {
       }
     }
 
+
     return (
-        <div>
+        <div className='mb-0 md:mb-72'>
           {
             user?.uid ?
             <div className='flex items-center justify-center min-h-screen'>
@@ -106,7 +113,7 @@ const Login = () => {
         </h2>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-sm">
-          <input type="text" {...register("email", {
+          <input  type="email" {...register("email", {
             required: "Email is required!"
           })} placeholder="Email" className="input input-bordered input-info w-full max-w-sm mt-4" />
           {errors.email && <p className="text-error">{errors.email?.message}</p>}
@@ -118,8 +125,8 @@ const Login = () => {
             })} placeholder="Password" className="input input-bordered input-info w-full max-w-sm mt-4" />
             <span onClick={handleToggle} className='cursor-pointer absolute mt-[26px] ml-[250px] lg:ml-[274px] text-black'><Icon icon={icon} /></span>
           {errors.password && <p className="text-error">{errors.password?.message}</p>}
-          <p className="text-sm mt-3 text-black" >Forget Password?</p>
           </div>
+          <Link to='/forgetpass'><p className="text-sm mt-3 text-sky-600" >Forget Password?</p></Link>
           <div>
             {
               loginError && <p className="text-error mt-4">{loginError}</p>

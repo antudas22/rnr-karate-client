@@ -13,6 +13,7 @@ import Announcement from "../../Pages/Dashboard/Announcement/Announcement";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ManageStudents from "../../Pages/Dashboard/ManageStudents/ManageStudents";
 import Error from "../../Pages/Error/Error";
+import ForgetPass from "../../Pages/ForgetPass/ForgetPass";
 import Belts from "../../Pages/Home/Belts/Belts";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: '/qualifications',
                 element: <Qualifications />
+            },
+            {
+                path: '/forgetpass',
+                element: <ForgetPass />
             }
         ]
     },

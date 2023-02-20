@@ -5,6 +5,7 @@ import Banner from '../Banner/Banner';
 import Belts from '../Belts/Belts';
 import Cards from '../Cards/Cards';
 import Course from '../Course/Course';
+import OurGoal from '../OurGoal/OurGoal';
 
 const Home = () => {
     useTitle('Home')
@@ -15,6 +16,7 @@ const Home = () => {
             <Achievements />
             <Course />
             <Belts />
+            <OurGoal />
         </div>
     );
 };

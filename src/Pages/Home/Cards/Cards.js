@@ -3,7 +3,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaRegClock } from "react-icons/fa";
 
 const Cards = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-around mt-5 lg:mt-20 gap-5 lg:gap-0 p-7">
+    <div className="flex flex-col lg:flex-row justify-around mt-5 lg:mt-20 gap-5 lg:gap-6 p-7 md:p-10 lg:p-0">
       <div className="card lg:w-96 bg-cyan-300 shadow-xl cursor-pointer transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 duration-700">
         <div className="flex p-10 items-center gap-5 text-white">
           <div>

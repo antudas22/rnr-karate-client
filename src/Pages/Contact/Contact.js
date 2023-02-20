@@ -25,7 +25,7 @@ const Contact = () => {
       e.target.reset();
   };
     return (
-        <div>
+        <div className='mb-0 md:mb-80'>
             <div className='flex justify-center'>
                 <h1 className='inline-block text-4xl font-bold border-b-4 border-slate-500 text-transparent bg-clip-text bg-gradient-to-t from-cyan-400 to-sky-600'>Contact Us</h1>
                 </div>

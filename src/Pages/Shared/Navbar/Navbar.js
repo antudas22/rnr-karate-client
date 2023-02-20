@@ -31,9 +31,9 @@ const Navbar = () => {
   );
   return (
       <div>
-        <div className="flex items-center bg-base-100 rounded-md px-5 my-2">
+        <div className="navbar flex items-center bg-base-100 rounded-md px-5 my-2">
       <div className="navbar-start">
-          <img width={"75px"} src={rnrLogo} alt="logo" />
+          <Link to="/"><img width={"75px"} src={rnrLogo} alt="logo" /></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal gap-1">{menuItems}</ul>
@@ -60,9 +60,9 @@ const Navbar = () => {
               >
                 <li className="text-black">
                       {
-                        <p>{user?.displayName}</p>
+                        <p className="bg-gradient-to-r from-cyan-400 to-sky-600 text-white">{user?.displayName}</p>
                         ||
-                        <p>{user?.email}</p>
+                        <p className="bg-gradient-to-r from-cyan-400 to-sky-600 text-white">{user?.email}</p>
                       }
                 </li>
                 <div className="lg:hidden">

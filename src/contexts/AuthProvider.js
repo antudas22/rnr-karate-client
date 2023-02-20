@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
 
@@ -27,6 +27,14 @@ const AuthProvider = ({children}) => {
         return updateProfile (auth.currentUser, userInfo);
     }
 
+    const verifyEmail = () => {
+        return sendEmailVerification(auth.currentUser);
+    }
+
+    const forgetPassword = email => {
+        return sendPasswordResetEmail(auth, email);
+    }
+
     const logOut = () => {
         setLoading(true);
         localStorage.removeItem('accessToken');
@@ -35,7 +43,9 @@ const AuthProvider = ({children}) => {
 
     useEffect( () => {
         const unsubscribe =onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
+            if(currentUser === null || currentUser.emailVerified){
+                setUser(currentUser);
+            }
             setLoading(false);
         });
 
@@ -47,6 +57,8 @@ const AuthProvider = ({children}) => {
         providerLogin,
         signIn,
         updateUser,
+        verifyEmail,
+        forgetPassword,
         logOut,
         user,
         loading

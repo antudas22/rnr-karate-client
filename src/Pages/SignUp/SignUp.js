@@ -14,7 +14,7 @@ const SignUp = () => {
   useTitle('Sign Up')
 
     const {register, formState: { errors }, handleSubmit} = useForm();
-    const {user, createUser, updateUser} = useContext(AuthContext);
+    const {user, createUser, updateUser, verifyEmail} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [accepted, setAccepted] = useState(false);
@@ -32,7 +32,8 @@ const SignUp = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
-        toast.success('Your account has been created successfully!')
+        handleEmailVerification();
+        toast.success('Great. Please check your email inbox or spam folder to get email verification link.',{duration: 10000,})
         const userInfo = {
           displayName: data.name
         }
@@ -63,6 +64,12 @@ const SignUp = () => {
       })
     }
 
+    const handleEmailVerification = () => {
+      verifyEmail()
+      .then(() => {})
+      .catch(error => console.error(error));
+    }
+
     const [type, setType] = useState('password');
     const [icon, setIcon] = useState(eyeOff);
 
@@ -81,7 +88,7 @@ const SignUp = () => {
       setAccepted(e.target.checked)
     }
 
-    return (<div>
+    return (<div  className='mb-0 md:mb-80'>
       {
         user?.uid ?
         <div className='flex items-center justify-center min-h-screen'>

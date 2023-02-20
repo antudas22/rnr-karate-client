@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import useTitle from '../../hooks/useTitle';
 
 const Qualifications = () => {
+    useTitle('Qualifications')
     return (
         <div>
             <div className='flex justify-center'>
