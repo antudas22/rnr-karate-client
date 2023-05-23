@@ -18,7 +18,7 @@ const Footer = () => {
         <span className="footer-title">Company</span> 
         <Link to="/about">About Us</Link> 
         <Link to="/contact">Contact us</Link>
-        <Link to="https://antu-d.web.app/" target="blank">Developer</Link>
+        <Link to="https://antud19.web.app/" target="blank">Developer</Link>
       </div>
       <div>
         <span className="footer-title">Help Line</span> 

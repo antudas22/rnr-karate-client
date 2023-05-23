@@ -1,5 +1,5 @@
 import React from 'react';
-import banner from '../../../assets/banner/banner-2.jpg'
+import banner from '../../../assets/banner/banner.jpg'
 import './Banner.css'
 import Typewriter from "typewriter-effect";
 import { Link } from 'react-router-dom';

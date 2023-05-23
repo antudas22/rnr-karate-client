@@ -22,7 +22,7 @@ const Cards = () => {
           </div>
           <div>
             <h2 className="card-title">Our Location</h2>
-            <p>Golachipa, Narayanganj, Dhaka</p>
+            <p>Charukola Institute, Sheikh Rasel Park, Narayanganj</p>
           </div>
         </div>
       </div>

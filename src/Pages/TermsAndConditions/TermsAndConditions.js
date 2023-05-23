@@ -24,8 +24,7 @@ const TermsAndConditions = () => {
                 <p>RNR Gladiator International Karate Academy Terms And Conditions (these "Terms" or these
                 "Terms and Conditions") contained in this Agreement shall govern your use of this Website and all
                 its content (collectively referred to herein as this "Website"). These Terms outline the rules and
-                regulations guiding the use of RNR Gladiator International Karate Academy located at [WEBSITE
-                URL]. All materials/information/documents/services or all other entities (collectively referred to as
+                regulations guiding the use of RNR Gladiator International Karate Academy located at <Link className='text-blue-600' to="/" target="_blank">rnr-karate.web.app</Link> . All materials/information/documents/services or all other entities (collectively referred to as
                 content) that appear on the RNR Gladiator International Karate Academy shall be administered
                 subject to these Terms and Conditions. These Terms and Conditions apply in full force and effect
                 to your use of this Website, and the use of this Website constitutes an express agreement with all

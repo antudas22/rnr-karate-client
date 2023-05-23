@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import course from '../../../assets/course.jpg'
+import course from '../../../assets/about-course-img.jpg'
 import PrimaryButton from '../../../components/PrimaryButton/PrimaryButton';
 
 const Course = () => {

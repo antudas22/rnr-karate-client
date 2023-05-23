@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useTitle from '../../../hooks/useTitle';
+import Loading from '../../Shared/Loading/Loading';
 
 const Announcement = () => {
     useTitle('Announcement');
 
-    const {data: announcements, } = useQuery({
+    const {data: announcements, isLoading } = useQuery({
         queryKey: ['announcements'],
         queryFn: async () => {
             try{
@@ -22,6 +23,9 @@ const Announcement = () => {
             }
         }
     })
+    if(isLoading){
+        return <Loading />
+      }
     return (
         <div className='mt-3'>
             {

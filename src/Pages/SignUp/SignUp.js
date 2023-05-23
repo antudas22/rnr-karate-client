@@ -112,18 +112,18 @@ const SignUp = () => {
           })} placeholder="Email" className="input input-bordered input-info w-full max-w-sm mt-4" />
           {errors.email && <p className="text-error">{errors.email?.message}</p>}
           </div>
-          <div className="form-control w-full max-w-sm">
+          <div className="form-control w-full max-w-sm relative">
           <input type={type} {...register("password", {
             required: "Password is required!",
             minLength: {value: 8, message: 'Password must be at least 8 characters!'},
             pattern: {
               value: /(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])/,
-              message: "Password must be strong!",
+              message: "Password must be min 8 characters long and contain one uppercase and one lowercase character!",
             }
             })} placeholder="Password" className="input input-bordered input-info w-full max-w-sm mt-4" />
-            <span onClick={handleToggle} className='cursor-pointer absolute mt-[26px] ml-[250px] lg:ml-[274px] text-black'><Icon icon={icon} /></span>
-          {errors.password && <p className="text-error">{errors.password?.message}</p>}
+            <span onClick={handleToggle} className='cursor-pointer absolute right-3 bottom-4'><Icon icon={icon} /></span>
           </div>
+          {errors.password && <p className="text-error">{errors.password?.message}</p>}
 
           <div className="form-control my-4">
             <div className='flex justify-between'>

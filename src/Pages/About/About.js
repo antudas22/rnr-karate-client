@@ -22,13 +22,12 @@ const About = () => {
   <div className="hero-content flex-col lg:flex-row-reverse gap-10">
     <div className='w-1/2'>
       <h1 className="text-4xl font-bold text-black">Noor Mohammed Ruma</h1>
-      <p className="py-4 text-lg text-black">Sensei Noor Mohammed Ruma, Black Belt 4th Dan in Shotokan, Wado-kai & Fighter Karate Style, Founder, Chief Coach & Secretary of RNR Gladiator International Karate Academy, Referee at Bangladesh Karate federation, Film actor at BFDC, Senior Journalist at The Daily Shakabarta.</p>
+      <p className="py-4 text-lg text-black">Sensei Noor Mohammed Ruma, Black Belt 4th Dan in Shotokan, Wado-kai & Fighter Karate Style, Founder, Chief Coach & Secretary of RNR Gladiator International Karate Academy, Referee at Bangladesh Karate federation, Film actor at BFDC, Senior Journalist at The Daily Shakalbarta.</p>
       <PrimaryButton><Link to="/aboutsensei">More About</Link></PrimaryButton>
     </div>
     <img src={ruma} className="max-w-sm rounded-full shadow-2xl" alt="" />
   </div>
         </div>
-        
             <div className="hero min-h-1/2 my-10">
   <div className="hero-content flex-col lg:flex-row-reverse gap-10">
     <img src={rubel} className="max-w-sm rounded-full shadow-2xl" alt="" />
